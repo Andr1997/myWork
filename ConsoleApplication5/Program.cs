@@ -8,7 +8,7 @@ namespace ConsoleApplication5
 {
     public class Program
     {
-        #region Class graf and Delegate for Work
+        #region Class virf and Delegate for Work
 
         public class virf
         {
@@ -24,6 +24,7 @@ namespace ConsoleApplication5
         public WriteLineNewRow NewRow = () => Console.WriteLine();
 
         #endregion
+
         static void Main(string[] args)
         {
             Program p = new Program();
@@ -219,7 +220,7 @@ namespace ConsoleApplication5
 
         #endregion
 
-        #region AddGraf
+        #region AddugareGraf
 
         //Adaugarea grafului din program
         public List<virf> AddCreatedGraf1()
@@ -372,7 +373,7 @@ namespace ConsoleApplication5
 
         #endregion
 
-        #region MetodsWithVirfs--xd :) 
+        #region Metode cu virfuri 
         //Meniul de Editare a grafului 
         public List<virf> MeniuAddAndOrEdit(List<virf> x)
         {

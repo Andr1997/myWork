@@ -74,7 +74,7 @@ namespace ConsoleApplication5
         #region ConvertireGraf
 
         //Meniul de convertire a grafului din starea initiala in starea dorita 
-        static void MeniuConvertireGraf(List<graf> _listGraf)
+        static void MeniuConvertireGraf(List<virf> _listGraf)
         {
             Console.WriteLine("Convertire graf in forma de : ");
             Console.WriteLine("Matrice de incidenta - 1 ");
@@ -100,7 +100,7 @@ namespace ConsoleApplication5
         }
 
         //Convert to Matrice de incidenta
-        static void ConvertToMatriceIncidenta(List<graf> _listGraf)
+        static void ConvertToMatriceIncidenta(List<virf> _listGraf)
         {
             string path = @"C:\Users\Andrian\Desktop\grafuri universitate\matriceIncidenta.txt";
 

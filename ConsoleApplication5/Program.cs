@@ -6,9 +6,11 @@ namespace ConsoleApplication5
 
     public class Program
     {
-        AddGraf Add = new AddGraf();
-        MetodeVirfuri MetsVirf = new MetodeVirfuri();
-        ConvertGraf ConvertIn = new ConvertGraf();
+        static Program p = new Program();
+        static AddGraf Add = new AddGraf();
+        static MetodeVirfuri MetsVirf = new MetodeVirfuri();
+        static ConvertGraf ConvertIn = new ConvertGraf();
+
 
         #region  Delegate for Work
 
@@ -23,7 +25,6 @@ namespace ConsoleApplication5
 
         static void Main(string[] args)
         {
-            Program p = new Program();
             p.MeniuAdaugareGraf();
             Console.ReadKey();
         }

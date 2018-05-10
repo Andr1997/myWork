@@ -6,7 +6,7 @@ namespace ConsoleApplication5
 {
     class AddGraf
     {
-        public Program p = new Program();
+        static Program p = new Program();
 
         //Adaugarea grafului din program
         public List<virf> AddCreatedGraf1()
@@ -110,6 +110,8 @@ namespace ConsoleApplication5
             {
                 p.Writeln("Dati indicii virfului " + i + " separati prin spatii ");
                 virfuristring = Convert.ToString(Console.ReadLine());
+                virfuristring = Regex.Replace(virfuristring, @"\s+", " ");
+
                 string[] virfuriarr = virfuristring.Split(' ');
                 foreach (var virfprim in virfuriarr)
                 {
@@ -144,6 +146,7 @@ namespace ConsoleApplication5
             {
                 p.Writeln("Dati indicii virfului " + i + " separati prin '_' finisind cu 0 ");
                 virfuristring = Convert.ToString(Console.ReadLine());
+                virfuristring = Regex.Replace(virfuristring, @"\s+", " ");
                 string[] virfuriarr = virfuristring.Split('_');
                 foreach (var virfprim in virfuriarr)
                 {

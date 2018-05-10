@@ -7,7 +7,8 @@ namespace ConsoleApplication5
 {
     public class ConvertGraf
     {
-        public Program p = new Program();
+        static Program p = new Program();
+        static MetodeVirfuri MetsV = new MetodeVirfuri();
 
         //Meniul de convertire a grafului din starea initiala in starea dorita 
         public void MeniuConvertireGraf(List<virf> _listGraf)
@@ -16,6 +17,7 @@ namespace ConsoleApplication5
             p.Writeln("Matrice de incidenta - 1 ");
             p.Writeln("Matrice de adiacenta - 2 ");
             p.Writeln("Lista de adiacenta - 3 ");
+            p.Writeln("Mergem la editare - 4 ");
 
             int k = Convert.ToInt32(Console.ReadLine());
 
@@ -23,13 +25,23 @@ namespace ConsoleApplication5
             {
                 case 1:
                     ConvertToMatriceIncidenta(_listGraf);
+                    p.NewRow();
+                    p.Writeln("Graful a fost pastrat in fisier!");
                     break;
                 case 2:
                     ConvertToMatriceAdiacenta(_listGraf);
+                    p.NewRow();
+                    p.Writeln("Graful a fost pastrat in fisier!");
                     break;
                 case 3:
                     ConvertToListAdiacent(_listGraf);
+                    p.NewRow();
+                    p.Writeln("Graful a fost pastrat in fisier!");
                     break;
+                case 4:
+                    MetsV.MeniuAddAndOrEdit(_listGraf);
+                    break;
+
             }
             p.NewRow();
             p.Writeln("Graful a fost pastrat in fisier!");

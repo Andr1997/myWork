@@ -1,2 +1,0 @@
-# myWorkWithGraf
-git -

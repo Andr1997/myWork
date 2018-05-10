@@ -12,7 +12,7 @@ namespace ConsoleApplication5
 {
     class Program
     {
-        public class graf
+        public class virf
         {
             public int Nume { get; set; }
             public List<int> Brate { get; set; }
@@ -26,7 +26,7 @@ namespace ConsoleApplication5
 
         static void MeniuAdaugareGraf()
         {
-            var x = new List<graf>();
+            var x = new List<virf>();
             Console.WriteLine("Meniu de adaugare a grafului : ");
             Console.WriteLine("Adaugare graf existent 1 model - 1 ");
             Console.WriteLine("Adaugare graf existent 2 model - 2 ");
@@ -74,7 +74,7 @@ namespace ConsoleApplication5
         #region ConvertireGraf
 
         //Meniul de convertire a grafului din starea initiala in starea dorita 
-        static void MeniuConvertireGraf(List<graf> _listGraf)
+        static void MeniuConvertireGraf(List<virf> _listGraf)
         {
             Console.WriteLine("Convertire graf in forma de : ");
             Console.WriteLine("Matrice de incidenta - 1 ");
@@ -100,7 +100,7 @@ namespace ConsoleApplication5
         }
 
         //Convert to Matrice de incidenta
-        static void ConvertToMatriceIncidenta(List<graf> _listGraf)
+        static void ConvertToMatriceIncidenta(List<virf> _listGraf)
         {
             string path = @"C:\Users\Andrian\Desktop\grafuri universitate\matriceIncidenta.txt";
 
@@ -156,7 +156,7 @@ namespace ConsoleApplication5
         }
 
         //Convert to Matrice de adiacenta
-        static void ConvertToMatriceAdiacenta(List<graf> _listGraf)
+        static void ConvertToMatriceAdiacenta(List<virf> _listGraf)
         {
             string path = @"C:\Users\Andrian\Desktop\grafuri universitate\matriceAdiacenta.txt";
             using (StreamWriter sw = File.CreateText(path))
@@ -192,7 +192,7 @@ namespace ConsoleApplication5
         }
 
         //Convert to Matrice de incidenta
-        static void ConvertToListAdiacent(List<graf> _listGraf)
+        static void ConvertToListAdiacent(List<virf> _listGraf)
         {
             string path = @"C:\Users\Andrian\Desktop\grafuri universitate\listaAdiacenta.txt";
             using (StreamWriter sw = File.CreateText(path))
@@ -215,37 +215,37 @@ namespace ConsoleApplication5
         #region AddGraf
 
         //Adaugarea grafului din program
-        static List<graf> AddCreatedGraf1()
+        static List<virf> AddCreatedGraf1()
         {
-            var _listGraf = new List<graf>();
+            var _listGraf = new List<virf>();
 
             //graf Universitate
-            _listGraf.Add(new graf { Nume = 1, Brate = new List<int> { 2, 5 } });
-            _listGraf.Add(new graf { Nume = 2, Brate = new List<int> { 1, 3 } });
-            _listGraf.Add(new graf { Nume = 3, Brate = new List<int> { 2, 3, 5 } });
-            _listGraf.Add(new graf { Nume = 4, Brate = new List<int> { 2, 3 } });
-            _listGraf.Add(new graf { Nume = 5, Brate = new List<int> { 1, 4 } });
-            _listGraf.Add(new graf { Nume = 6, Brate = new List<int> { } });
+            _listGraf.Add(new virf { Nume = 1, Brate = new List<int> { 2, 5 } });
+            _listGraf.Add(new virf { Nume = 2, Brate = new List<int> { 1, 3 } });
+            _listGraf.Add(new virf { Nume = 3, Brate = new List<int> { 2, 3, 5 } });
+            _listGraf.Add(new virf { Nume = 4, Brate = new List<int> { 2, 3 } });
+            _listGraf.Add(new virf { Nume = 5, Brate = new List<int> { 1, 4 } });
+            _listGraf.Add(new virf { Nume = 6, Brate = new List<int> { } });
 
             return _listGraf;
         }
-        static List<graf> AddCreatedGraf2()
+        static List<virf> AddCreatedGraf2()
         {
-            var _listGraf = new List<graf>();
+            var _listGraf = new List<virf>();
 
             //graf Internet
-            _listGraf.Add(new graf { Nume = 1, Brate = new List<int> { 2 } });
-            _listGraf.Add(new graf { Nume = 2, Brate = new List<int> { 4 } });
-            _listGraf.Add(new graf { Nume = 3, Brate = new List<int> { 1, 4 } });
-            _listGraf.Add(new graf { Nume = 4, Brate = new List<int> { 1 } });
+            _listGraf.Add(new virf { Nume = 1, Brate = new List<int> { 2 } });
+            _listGraf.Add(new virf { Nume = 2, Brate = new List<int> { 4 } });
+            _listGraf.Add(new virf { Nume = 3, Brate = new List<int> { 1, 4 } });
+            _listGraf.Add(new virf { Nume = 4, Brate = new List<int> { 1 } });
 
             return _listGraf;
         }
 
         //Adaugarea grafului cu ajutorul Matricei de incidenta
-        static List<graf> AddGrafMatriceIncident()
+        static List<virf> AddGrafMatriceIncident()
         {
-            List<graf> grafFinal = new List<graf>();
+            List<virf> grafFinal = new List<virf>();
             int n;
             string coarda = "";
             var listprimvirf = new List<int>();
@@ -298,15 +298,15 @@ namespace ConsoleApplication5
         StopCiclu:
             for (int j = 1; j <= n; j++)
             {
-                grafFinal.Add(new graf { Nume = j, Brate = new List<int>(tablou[j]) });
+                grafFinal.Add(new virf { Nume = j, Brate = new List<int>(tablou[j]) });
             }
             return grafFinal;
         }
 
         //Adaugarea grafului cu ajutorul Matricei de adiacenta
-        static List<graf> AddGrafMatriceAdiacent()
+        static List<virf> AddGrafMatriceAdiacent()
         {
-            List<graf> grafFinal = new List<graf>();
+            List<virf> grafFinal = new List<virf>();
             int n = 0;
             string virfuristring = "";
             var listprimvirf = new List<int>();
@@ -330,7 +330,7 @@ namespace ConsoleApplication5
                         listfinvirf.Add(j + 1);
                     }
                 }
-                grafFinal.Add(new graf { Nume = i, Brate = new List<int>(listfinvirf) });
+                grafFinal.Add(new virf { Nume = i, Brate = new List<int>(listfinvirf) });
                 listprimvirf.Clear();
                 listfinvirf.Clear();
             }
@@ -339,9 +339,9 @@ namespace ConsoleApplication5
         }
 
         //Adaugarea grafului cu ajutorul Listei de adiacenta
-        static List<graf> AddGrafList()
+        static List<virf> AddGrafList()
         {
-            List<graf> graffinal = new List<graf>();
+            List<virf> graffinal = new List<virf>();
             int n = 0;
             string virfuristring = "";
             var listfinvirf = new List<int>();
@@ -357,7 +357,7 @@ namespace ConsoleApplication5
                     listfinvirf.Add(Convert.ToInt32(virfprim));
                 }
                 listfinvirf.RemoveAt(listfinvirf.Count - 1);
-                graffinal.Add(new graf { Nume = i, Brate = new List<int>(listfinvirf) });
+                graffinal.Add(new virf { Nume = i, Brate = new List<int>(listfinvirf) });
                 listfinvirf.Clear();
             }
 
@@ -368,7 +368,7 @@ namespace ConsoleApplication5
 
         #region MetodsWithVirfs--xd :) 
         //Meniul de Editare a grafului 
-        static List<graf> MeniuAddAndOrEdit(List<graf> x)
+        static List<virf> MeniuAddAndOrEdit(List<virf> x)
         {
             Console.WriteLine("Meniu de adaugare sau editare a unui virf : ");
             Console.WriteLine("Adaugare virf - 1 ");
@@ -392,7 +392,7 @@ namespace ConsoleApplication5
         }
 
         //Adaugare virf la graf
-        static List<graf> AddVirf(List<graf> _listaGrafuri)
+        static List<virf> AddVirf(List<virf> _listaGrafuri)
         {
             int nume = 0;
             List<int> listprimvirf = new List<int>();
@@ -409,14 +409,14 @@ namespace ConsoleApplication5
                 listprimvirf.Add(Convert.ToInt32(item));
             }
 
-            var virf = new graf { Nume = nume, Brate = new List<int>(listprimvirf) };
+            var virf = new virf { Nume = nume, Brate = new List<int>(listprimvirf) };
             _listaGrafuri.Add(virf);
             return _listaGrafuri;
 
         }
 
         //Editare virf la graf
-        static List<graf> EditVirf(List<graf> _listGrafuri)
+        static List<virf> EditVirf(List<virf> _listGrafuri)
         {
             List<int> listprimvirf = new List<int>();
             Console.WriteLine("Dati varful grafului ce va fi editat :");
@@ -431,7 +431,7 @@ namespace ConsoleApplication5
                 listprimvirf.Add(Convert.ToInt32(item));
             }
 
-            graf newItem = new graf();
+            virf newItem = new virf();
             newItem.Nume = n;
             newItem.Brate = listprimvirf;
             _listGrafuri[n - 1] = newItem;
@@ -440,7 +440,7 @@ namespace ConsoleApplication5
         }
 
         //Stergere virf la graf
-        static List<graf> StergeVirf(List<graf> _listaGrafuri)
+        static List<virf> StergeVirf(List<virf> _listaGrafuri)
         {
             Console.WriteLine("Dati virful care vreti ca sa fie sters : ");
             int virf = Convert.ToInt32(Console.ReadLine());
@@ -457,7 +457,7 @@ namespace ConsoleApplication5
         } 
 
         //Afisare Virfuri cu brate
-        static void AfisareVirfuri(List<graf> _listaGrafuri)
+        static void AfisareVirfuri(List<virf> _listaGrafuri)
         {
             foreach (var item in _listaGrafuri)
             {

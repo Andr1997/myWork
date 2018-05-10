@@ -4,3 +4,6 @@ c:\users\andrian\documents\visual studio 2013\Projects\ConsoleApplication5\Conso
 c:\users\andrian\documents\visual studio 2013\Projects\ConsoleApplication5\ConsoleApplication5\obj\Debug\ConsoleApplication5.csprojResolveAssemblyReference.cache
 c:\users\andrian\documents\visual studio 2013\Projects\ConsoleApplication5\ConsoleApplication5\obj\Debug\ConsoleApplication5.exe
 c:\users\andrian\documents\visual studio 2013\Projects\ConsoleApplication5\ConsoleApplication5\obj\Debug\ConsoleApplication5.pdb
+C:\Users\Andrian\Desktop\myGitexperiment\myWork\ConsoleApplication5\bin\Debug\ConsoleApplication5.exe.config
+C:\Users\Andrian\Desktop\myGitexperiment\myWork\ConsoleApplication5\obj\Debug\ConsoleApplication5.exe
+C:\Users\Andrian\Desktop\myGitexperiment\myWork\ConsoleApplication5\obj\Debug\ConsoleApplication5.pdb

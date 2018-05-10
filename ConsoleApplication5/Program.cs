@@ -2,37 +2,44 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Mime;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace ConsoleApplication5
 {
-    class Program
+    public class Program
     {
+        #region Class graf and Delegate for Work
+
         public class virf
         {
             public int Nume { get; set; }
             public List<int> Brate { get; set; }
         }
 
+        public delegate void WriteLine(string sir);
+        public delegate void WriteLineNewRow();
+
+        public WriteLine Writeln = (str) => Console.WriteLine(str);
+        public WriteLine Write = (str) => Console.Write(str);
+        public WriteLineNewRow NewRow = () => Console.WriteLine();
+
+        #endregion
         static void Main(string[] args)
         {
-            MeniuAdaugareGraf();
+            Program p = new Program();
+            p.MeniuAdaugareGraf();
             Console.ReadKey();
         }
 
-        static void MeniuAdaugareGraf()
+        public void MeniuAdaugareGraf()
         {
             var x = new List<virf>();
-            Console.WriteLine("Meniu de adaugare a grafului : ");
-            Console.WriteLine("Adaugare graf existent 1 model - 1 ");
-            Console.WriteLine("Adaugare graf existent 2 model - 2 ");
-            Console.WriteLine("Adaugare graf prin Matrice de incidenta - 3 ");
-            Console.WriteLine("Adaugare graf prin Matrice de adiacenta - 4 ");
-            Console.WriteLine("Adaugare graf prin Lista de adiacenta - 5 ");
+            Writeln("Meniu de adaugare a grafului : ");
+            Writeln("Adaugare graf existent 1 model - 1 ");
+            Writeln("Adaugare graf existent 2 model - 2 ");
+            Writeln("Adaugare graf prin Matrice de incidenta - 3 ");
+            Writeln("Adaugare graf prin Matrice de adiacenta - 4 ");
+            Writeln("Adaugare graf prin Lista de adiacenta - 5 ");
             int k = Convert.ToInt32(Console.ReadLine());
             switch (k)
             {
@@ -56,11 +63,11 @@ namespace ConsoleApplication5
 
         CicluMenuConvert:
             MeniuConvertireGraf(x);
-            Console.WriteLine();
+            NewRow();
             x = MeniuAddAndOrEdit(x);
             AfisareVirfuri(x);
 
-            Console.WriteLine("Continuati? da/nu");
+            Writeln("Continuati? da/nu");
             if (Convert.ToString(Console.ReadLine()) == "da")
             {
                 goto CicluMenuConvert;
@@ -74,12 +81,12 @@ namespace ConsoleApplication5
         #region ConvertireGraf
 
         //Meniul de convertire a grafului din starea initiala in starea dorita 
-        static void MeniuConvertireGraf(List<virf> _listGraf)
+        public void MeniuConvertireGraf(List<virf> _listGraf)
         {
-            Console.WriteLine("Convertire graf in forma de : ");
-            Console.WriteLine("Matrice de incidenta - 1 ");
-            Console.WriteLine("Matrice de adiacenta - 2 ");
-            Console.WriteLine("Lista de adiacenta - 3 ");
+            Writeln("Convertire graf in forma de : ");
+            Writeln("Matrice de incidenta - 1 ");
+            Writeln("Matrice de adiacenta - 2 ");
+            Writeln("Lista de adiacenta - 3 ");
 
             int k = Convert.ToInt32(Console.ReadLine());
 
@@ -95,23 +102,23 @@ namespace ConsoleApplication5
                     ConvertToListAdiacent(_listGraf);
                     break;
             }
-            Console.WriteLine();
-            Console.WriteLine("Graful a fost pastrat in fisier!");
+            NewRow();
+            Writeln("Graful a fost pastrat in fisier!");
         }
 
         //Convert to Matrice de incidenta
-        static void ConvertToMatriceIncidenta(List<virf> _listGraf)
+        public void ConvertToMatriceIncidenta(List<virf> _listGraf)
         {
             string path = @"C:\Users\Andrian\Desktop\grafuri universitate\matriceIncidenta.txt";
 
             using (StreamWriter sw = File.CreateText(path))
             {
-                Console.WriteLine("Afisarea grafului in forma Matricei de Incidenta");
+                Writeln("Afisarea grafului in forma Matricei de Incidenta");
                 sw.WriteLine("Afisarea grafului in forma Matricei de Incidenta");
                 int n = _listGraf.Count;
                 List<int> temporarItem = new List<int>();
-                for (int z = 1; z <= n; z++) { Console.Write("x" + z + " "); sw.Write("x" + z + " "); }
-                Console.WriteLine();
+                for (int z = 1; z <= n; z++) { Write("x" + z + " "); sw.Write("x" + z + " "); }
+                NewRow();
                 sw.WriteLine();
                 foreach (var itemGraf in _listGraf)
                 {
@@ -123,30 +130,30 @@ namespace ConsoleApplication5
                         {
                             if (i == itemGraf.Nume && temporarItem.Contains(i))
                             {
-                                Console.Write(" 2 ");
+                                Write(" 2 ");
                                 sw.Write(" 2 ");
                                 temporarItem.Clear();
                                 temporarList.RemoveAt(0);
                             }
                             else if (i == itemGraf.Nume)
                             {
-                                Console.Write("-1 ");
+                                Write("-1 ");
                                 sw.Write("-1 ");
                             }
                             else if (i != itemGraf.Nume && temporarItem.Contains(i))
                             {
-                                Console.Write(" 1 ");
+                                Write(" 1 ");
                                 sw.Write(" 1 ");
                                 temporarItem.Clear();
                                 temporarList.RemoveAt(0);
                             }
                             else
                             {
-                                Console.Write(" 0 ");
+                                Write(" 0 ");
                                 sw.Write(" 0 ");
                             }
                         }
-                        Console.WriteLine();
+                        NewRow();
                         sw.WriteLine();
                     }
 
@@ -156,54 +163,54 @@ namespace ConsoleApplication5
         }
 
         //Convert to Matrice de adiacenta
-        static void ConvertToMatriceAdiacenta(List<virf> _listGraf)
+        public void ConvertToMatriceAdiacenta(List<virf> _listGraf)
         {
             string path = @"C:\Users\Andrian\Desktop\grafuri universitate\matriceAdiacenta.txt";
             using (StreamWriter sw = File.CreateText(path))
             {
-                Console.WriteLine("Afisarea grafului in forma Matricei de adiacenta");
-                Console.WriteLine();
-                Console.Write("  ");
+                Writeln("Afisarea grafului in forma Matricei de adiacenta");
+                NewRow();
+                Write("  ");
                 sw.WriteLine("Afisarea grafului in forma Matricei de adiacenta");
                 sw.WriteLine();
                 sw.Write("  ");
 
                 for (int i = 1; i <= _listGraf.Count; i++)
                 {
-                    Console.Write(" x" + i);
+                    Write(" x" + i);
                     sw.Write(" x" + i);
                 }
-                Console.WriteLine();
+                NewRow();
                 sw.WriteLine();
                 foreach (var itemGraf in _listGraf)
                 {
-                    Console.Write("x" + itemGraf.Nume + " ");
+                    Write("x" + itemGraf.Nume + " ");
                     sw.Write("x" + itemGraf.Nume + " ");
 
                     for (int i = 1; i <= _listGraf.Count; i++)
                     {
-                        if (itemGraf.Brate.Contains(i)) { Console.Write("1  "); sw.Write("1  "); }
-                        else { Console.Write("0  "); sw.Write("0  "); }
+                        if (itemGraf.Brate.Contains(i)) { Write("1  "); sw.Write("1  "); }
+                        else { Write("0  "); sw.Write("0  "); }
                     }
-                    Console.WriteLine();
+                    NewRow();
                     sw.WriteLine();
                 }
             }
         }
 
         //Convert to Matrice de incidenta
-        static void ConvertToListAdiacent(List<virf> _listGraf)
+        public void ConvertToListAdiacent(List<virf> _listGraf)
         {
             string path = @"C:\Users\Andrian\Desktop\grafuri universitate\listaAdiacenta.txt";
             using (StreamWriter sw = File.CreateText(path))
             {
-                Console.WriteLine("Afisarea grafului in forma Listei de adiacenta");
+                Writeln("Afisarea grafului in forma Listei de adiacenta");
                 sw.WriteLine("Afisarea grafului in forma Listei de adiacenta");
                 foreach (var item in _listGraf)
                 {
                     string brate = string.Join("_", item.Brate.ToArray());
                     string res = brate.Length > 2 ? item.Nume + " | " + brate + "_0" : item.Nume + " | 0";
-                    Console.WriteLine(res);
+                    Writeln(res);
                     sw.WriteLine(res);
                 }
             }
@@ -215,7 +222,7 @@ namespace ConsoleApplication5
         #region AddGraf
 
         //Adaugarea grafului din program
-        static List<virf> AddCreatedGraf1()
+        public List<virf> AddCreatedGraf1()
         {
             var _listGraf = new List<virf>();
 
@@ -229,7 +236,7 @@ namespace ConsoleApplication5
 
             return _listGraf;
         }
-        static List<virf> AddCreatedGraf2()
+        public List<virf> AddCreatedGraf2()
         {
             var _listGraf = new List<virf>();
 
@@ -243,27 +250,26 @@ namespace ConsoleApplication5
         }
 
         //Adaugarea grafului cu ajutorul Matricei de incidenta
-        static List<virf> AddGrafMatriceIncident()
+        public List<virf> AddGrafMatriceIncident()
         {
             List<virf> grafFinal = new List<virf>();
             int n;
             string coarda = "";
             var listprimvirf = new List<int>();
-            Console.WriteLine("Dati numarul virfurilor : ");
+            Writeln("Dati numarul virfurilor : ");
             n = Convert.ToInt32(Console.ReadLine());
 
             List<int>[] tablou = new List<int>[n + 1];
             for (int x = 0; x <= n; x++) { tablou[x] = new List<int>(); }
 
-            Console.WriteLine("Introduceti datele coardelor separate prin spatii,");
-            Console.WriteLine("in forma de matrice, ");
-            Console.WriteLine("dupa care finisati ciclul cu cuvintul 'stop' ! ");
+            Writeln("Introduceti datele coardelor separate prin spatii,");
+            Writeln("in forma de matrice, ");
+            Writeln("dupa care finisati ciclul cu cuvintul 'stop' ! ");
 
             int i = 1;
 
         StartCiclu:
             {
-                //Console.WriteLine("Coarda nr : " + i);
                 coarda = Convert.ToString(Console.ReadLine());
                 coarda = Regex.Replace(coarda, @"\s+", " ");
 
@@ -304,18 +310,18 @@ namespace ConsoleApplication5
         }
 
         //Adaugarea grafului cu ajutorul Matricei de adiacenta
-        static List<virf> AddGrafMatriceAdiacent()
+        public List<virf> AddGrafMatriceAdiacent()
         {
             List<virf> grafFinal = new List<virf>();
             int n = 0;
             string virfuristring = "";
             var listprimvirf = new List<int>();
             var listfinvirf = new List<int>();
-            Console.WriteLine("Dati numarul de virfuri : ");
+            Writeln("Dati numarul de virfuri : ");
             n = Convert.ToInt32(Console.ReadLine());
             for (int i = 1; i <= n; i++)
             {
-                Console.WriteLine("Dati indicii virfului " + i + " separati prin spatii ");
+                Writeln("Dati indicii virfului " + i + " separati prin spatii ");
                 virfuristring = Convert.ToString(Console.ReadLine());
                 string[] virfuriarr = virfuristring.Split(' ');
                 foreach (var virfprim in virfuriarr)
@@ -334,22 +340,22 @@ namespace ConsoleApplication5
                 listprimvirf.Clear();
                 listfinvirf.Clear();
             }
-            Console.WriteLine();
+            NewRow();
             return grafFinal;
         }
 
         //Adaugarea grafului cu ajutorul Listei de adiacenta
-        static List<virf> AddGrafList()
+        public List<virf> AddGrafList()
         {
             List<virf> graffinal = new List<virf>();
             int n = 0;
             string virfuristring = "";
             var listfinvirf = new List<int>();
-            Console.WriteLine("Dati numarul de virfuri : ");
+            Writeln("Dati numarul de virfuri : ");
             n = Convert.ToInt32(Console.ReadLine());
             for (int i = 1; i <= n; i++)
             {
-                Console.WriteLine("Dati indicii virfului " + i + " separati prin '_' finisind cu 0 ");
+                Writeln("Dati indicii virfului " + i + " separati prin '_' finisind cu 0 ");
                 virfuristring = Convert.ToString(Console.ReadLine());
                 string[] virfuriarr = virfuristring.Split('_');
                 foreach (var virfprim in virfuriarr)
@@ -368,12 +374,12 @@ namespace ConsoleApplication5
 
         #region MetodsWithVirfs--xd :) 
         //Meniul de Editare a grafului 
-        static List<virf> MeniuAddAndOrEdit(List<virf> x)
+        public List<virf> MeniuAddAndOrEdit(List<virf> x)
         {
-            Console.WriteLine("Meniu de adaugare sau editare a unui virf : ");
-            Console.WriteLine("Adaugare virf - 1 ");
-            Console.WriteLine("Editare virf - 2 ");
-            Console.WriteLine("Stergere Varf - 3 ");
+            Writeln("Meniu de adaugare sau editare a unui virf : ");
+            Writeln("Adaugare virf - 1 ");
+            Writeln("Editare virf - 2 ");
+            Writeln("Stergere Varf - 3 ");
 
             int k = Convert.ToInt32(Console.ReadLine());
             switch (k)
@@ -392,14 +398,14 @@ namespace ConsoleApplication5
         }
 
         //Adaugare virf la graf
-        static List<virf> AddVirf(List<virf> _listaGrafuri)
+        public List<virf> AddVirf(List<virf> _listaGrafuri)
         {
             int nume = 0;
             List<int> listprimvirf = new List<int>();
 
-            Console.WriteLine("Introduceti numarul virfului : ");
+            Writeln("Introduceti numarul virfului : ");
             nume = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Dati bratele separate printr-un singur spatiu!");
+            Writeln("Dati bratele separate printr-un singur spatiu!");
             string brateEdit = Convert.ToString(Console.ReadLine());
 
             string[] tablist = brateEdit.Split(' ');
@@ -416,12 +422,12 @@ namespace ConsoleApplication5
         }
 
         //Editare virf la graf
-        static List<virf> EditVirf(List<virf> _listGrafuri)
+        public List<virf> EditVirf(List<virf> _listGrafuri)
         {
             List<int> listprimvirf = new List<int>();
-            Console.WriteLine("Dati varful grafului ce va fi editat :");
+            Writeln("Dati varful grafului ce va fi editat :");
             int n = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Dati bratele separate printr-un singur spatiu!");
+            Writeln("Dati bratele separate printr-un singur spatiu!");
             string brateEdit = Convert.ToString(Console.ReadLine());
 
             string[] tablist = brateEdit.Split(' ');
@@ -440,9 +446,9 @@ namespace ConsoleApplication5
         }
 
         //Stergere virf la graf
-        static List<virf> StergeVirf(List<virf> _listaGrafuri)
+        public List<virf> StergeVirf(List<virf> _listaGrafuri)
         {
-            Console.WriteLine("Dati virful care vreti ca sa fie sters : ");
+            Writeln("Dati virful care vreti ca sa fie sters : ");
             int virf = Convert.ToInt32(Console.ReadLine());
             int aux = 0;
             foreach (var item in _listaGrafuri)
@@ -457,20 +463,20 @@ namespace ConsoleApplication5
         } 
 
         //Afisare Virfuri cu brate
-        static void AfisareVirfuri(List<virf> _listaGrafuri)
+        public void AfisareVirfuri(List<virf> _listaGrafuri)
         {
             foreach (var item in _listaGrafuri)
             {
-                Console.Write("Graful [" + item.Nume + "] cu bratele spre : ");
+                Write("Graful [" + item.Nume + "] cu bratele spre : ");
                 foreach (var itembrat in item.Brate)
                 {
-                    Console.Write(itembrat + " ");
+                    Write(itembrat + " ");
                 }
-                Console.WriteLine();
+                NewRow();
             }
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
+            NewRow();
+            NewRow();
+            NewRow();
         }
 
         #endregion

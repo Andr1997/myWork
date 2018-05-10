@@ -12,7 +12,7 @@ namespace ConsoleApplication5
 {
     class Program
     {
-        public class graf
+        public class virf
         {
             public int Nume { get; set; }
             public List<int> Brate { get; set; }

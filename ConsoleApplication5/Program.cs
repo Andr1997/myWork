@@ -32,6 +32,7 @@ namespace ConsoleApplication5
         public void MeniuAdaugareGraf()
         {
             var x = new List<virf>();
+
             Writeln("Meniu de adaugare a grafului : ");
             Writeln("Adaugare graf existent 1 model - 1 ");
             Writeln("Adaugare graf existent 2 model - 2 ");
@@ -63,10 +64,9 @@ namespace ConsoleApplication5
             ConvertIn.MeniuConvertireGraf(x);
             NewRow();
             x = MetsVirf.MeniuAddAndOrEdit(x);
-            MetsVirf.AfisareVirfuri(x);
 
             Writeln("Continuati? da/nu");
-            if (Convert.ToString(Console.ReadLine()) == "da")
+            if (Convert.ToString(Console.ReadLine()) == "da" || Convert.ToString(Console.ReadLine()) == "Da" || Convert.ToString(Console.ReadLine()) == "DA")
             {
                 goto CicluMenuConvert;
             }

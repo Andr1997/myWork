@@ -29,6 +29,7 @@ namespace ConsoleApplication5
                     StergeVirf(x);
                     break;
             }
+            AfisareVirfuri(x);
             return x;
         }
 
@@ -50,6 +51,11 @@ namespace ConsoleApplication5
             p.Writeln("Dati bratele separate printr-un singur spatiu!");
             string brateEdit = Convert.ToString(Console.ReadLine());
             brateEdit = Regex.Replace(brateEdit, @"\s+", " ");
+            if (brateEdit == " " || brateEdit == "")
+            {
+                _listaGrafuri.Add(new virf { Nume = nume, Brate = new List<int>() });
+                return _listaGrafuri;
+            }
 
             string[] tablist = brateEdit.Split(' ');
 
@@ -88,12 +94,18 @@ namespace ConsoleApplication5
             p.Writeln("Dati bratele separate printr-un singur spatiu!");
             string brateEdit = Convert.ToString(Console.ReadLine());
             brateEdit = Regex.Replace(brateEdit, @"\s+", " ");
-
-            string[] tablist = brateEdit.Split(' ');
-
-            foreach (var item in tablist)
+            if (brateEdit == " " || brateEdit == "")
             {
-                listprimvirf.Add(Convert.ToInt32(item));
+                //nothing
+            }
+            else
+            {
+                string[] tablist = brateEdit.Split(' ');
+
+                foreach (var item in tablist)
+                {
+                    listprimvirf.Add(Convert.ToInt32(item));
+                }
             }
 
             virf newItem = new virf();
@@ -141,7 +153,7 @@ namespace ConsoleApplication5
         {
             foreach (var item in _listaGrafuri)
             {
-                p.Write("Graful [" + item.Nume + "] cu bratele spre : ");
+                p.Write("Virful [" + item.Nume + "] cu bratele spre : ");
                 foreach (var itembrat in item.Brate)
                 {
                     p.Write(itembrat + " ");

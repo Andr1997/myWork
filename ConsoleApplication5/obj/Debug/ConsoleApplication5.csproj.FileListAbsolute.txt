@@ -10,3 +10,10 @@ C:\Users\Andrian\Desktop\myGitexperiment\myWork\ConsoleApplication5\obj\Debug\Co
 C:\Users\Andrian\Desktop\myGitexperiment\myWork\ConsoleApplication5\bin\Debug\ConsoleApplication5.exe
 C:\Users\Andrian\Desktop\myGitexperiment\myWork\ConsoleApplication5\bin\Debug\ConsoleApplication5.pdb
 C:\Users\Andrian\Desktop\myGitexperiment\myWork\ConsoleApplication5\obj\Debug\ConsoleApplication5.csprojResolveAssemblyReference.cache
+C:\Users\Andrian\Desktop\graf univer\myWork\ConsoleApplication5\bin\Debug\ConsoleApplication5.exe.config
+C:\Users\Andrian\Desktop\graf univer\myWork\ConsoleApplication5\bin\Debug\ConsoleApplication5.exe
+C:\Users\Andrian\Desktop\graf univer\myWork\ConsoleApplication5\bin\Debug\ConsoleApplication5.pdb
+C:\Users\Andrian\Desktop\graf univer\myWork\ConsoleApplication5\obj\Debug\ConsoleApplication5.csprojResolveAssemblyReference.cache
+C:\Users\Andrian\Desktop\graf univer\myWork\ConsoleApplication5\obj\Debug\ConsoleApplication5.csproj.CoreCompileInputs.cache
+C:\Users\Andrian\Desktop\graf univer\myWork\ConsoleApplication5\obj\Debug\ConsoleApplication5.exe
+C:\Users\Andrian\Desktop\graf univer\myWork\ConsoleApplication5\obj\Debug\ConsoleApplication5.pdb

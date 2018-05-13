@@ -44,7 +44,6 @@ namespace ConsoleApplication5
 
             }
             p.NewRow();
-            p.Writeln("Graful a fost pastrat in fisier!");
         }
 
         //Convert to Matrice de incidenta
@@ -150,7 +149,7 @@ namespace ConsoleApplication5
                 foreach (var item in _listGraf)
                 {
                     string brate = string.Join("_", item.Brate.ToArray());
-                    string res = brate.Length > 2 ? item.Nume + " | " + brate + "_0" : item.Nume + " | 0";
+                    string res = brate.Length != 0 ? item.Nume + " | " + brate + "_0" : item.Nume + " | 0";
                     p.Writeln(res);
                     sw.WriteLine(res);
                 }
